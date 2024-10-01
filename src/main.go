@@ -11,9 +11,9 @@ import (
 	sdktrace "go.opentelemetry.io/otel/sdk/trace" // Alias para evitar conflito com a variável trace
 )
 
-// initTracer configura o rastreamento para exportar para o terminal.
+// Configurando o rastreamento.
 func initTracer() func() {
-	// Exporta os dados de rastreamento para o terminal.
+	// Exportando os dados de rastreamento para o terminal.
 	exp, err := stdouttrace.New(stdouttrace.WithPrettyPrint())
 	if err != nil {
 		log.Fatalf("failed to initialize stdouttrace exporter %v", err)
@@ -25,7 +25,7 @@ func initTracer() func() {
 
 	otel.SetTracerProvider(tp)
 
-	// Função para encerrar o TracerProvider de forma segura.
+	// Função para encerrar o TracerProvider.
 	return func() {
 		if err := tp.Shutdown(context.Background()); err != nil {
 			log.Fatalf("failed to shutdown TracerProvider %v", err)
@@ -41,7 +41,6 @@ func main() {
 	ctx, span := tracer.Start(context.Background(), "main")
 	defer span.End()
 
-	// Simulação de uma função que executa algum processo
 	work(ctx)
 
 	fmt.Println("Processo completado com sucesso!")
@@ -52,6 +51,6 @@ func work(ctx context.Context) {
 	_, span := tracer.Start(ctx, "work")
 	defer span.End()
 
-	// Simula trabalho com espera
+	// Simulando trabalho com espera
 	time.Sleep(1 * time.Second)
 }
