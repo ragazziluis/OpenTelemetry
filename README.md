@@ -12,7 +12,6 @@ O objetivo deste repositório é demonstrar a execução dos exemplos fornecidos
 
 - `src/`: Contém o código-fonte dos exemplos do tutorial.
 - `assets/`: Contém prints das execuções dos exemplos.
-- `docs/`: Contém documentação relacionada ao projeto e as etapas do tutorial.
 
 ## :gear: Passos Realizados
 
