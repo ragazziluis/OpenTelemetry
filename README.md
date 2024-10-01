@@ -34,40 +34,7 @@ Todos os exemplos de rastreamento com OpenTelemetry foram executados e documenta
 
 ### 3. Ampliação dos Comentários do Código
 
-Os comentários no código foram ampliados para explicar as técnicas e conceitos de OpenTelemetry e rastreamento distribuído. Veja abaixo um exemplo de como os comentários foram aplicados no código:
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "time"
-    "go.opentelemetry.io/otel"
-    "go.opentelemetry.io/otel/trace"
-)
-
-// main inicia o processo de rastreamento com OpenTelemetry.
-// Utilizamos spans para rastrear as operações do sistema.
-func main() {
-    tracer := otel.Tracer("example-tracer") // Definindo um tracer para rastreamento
-    ctx, span := tracer.Start(context.Background(), "main") // Iniciando um span principal
-    defer span.End() // Finalizando o span no final da execução
-
-    work(ctx) // Chama uma função simulando uma tarefa
-    fmt.Println("Processo completado com sucesso!")
-}
-
-// work simula uma operação que será rastreada com um novo span.
-func work(ctx context.Context) {
-    tracer := otel.Tracer("example-tracer")
-    _, span := tracer.Start(ctx, "work") // Inicia um span para a função de trabalho
-    defer span.End() // Finaliza o span quando o trabalho termina
-
-    time.Sleep(1 * time.Second) // Simula uma operação que leva 1 segundo
-}
-
-```
+Os comentários no código foram ampliados para explicar as técnicas e conceitos de OpenTelemetry e rastreamento distribuído.
 
 ## :memo: Conclusão
 
